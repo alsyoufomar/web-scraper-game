@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --grid-size: 309px;
+  --cell-size: 30px;
+  --cell-color: #444;
+  --passedCell: #0f0;
+  --mineCell: #f00;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  height: var(--grid-size);
+  width: var(--grid-size);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
+.cell {
+  background-color: var(--cell-color);
+  height: var(--cell-size);
+  width: var(--cell-size);
+  border-radius: 3px;
+}
+
+.mine {
+  background-color: var(--mineCell);
+}
