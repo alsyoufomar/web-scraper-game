@@ -3,6 +3,7 @@ console.log(board)
 const boardWidth = 10
 const allCells = []
 const minesNum = 20
+let isGameOver = false
 
 function gameBoard () {
   const mines = Array(minesNum).fill('mine')
@@ -16,6 +17,10 @@ function gameBoard () {
     cell.setAttribute('id', i)
     board.append(cell)
     allCells.push(cell)
+
+    cell.addEventListener('click', (e) => {
+      clickMe(cell)
+    })
   }
   console.log(allCells[0])
   for (let i = 0; i < allCells.length; i++) {
@@ -23,8 +28,9 @@ function gameBoard () {
     const isLeftEdge = i % boardWidth === 0
     const isRightEdge = i % boardWidth === boardWidth - 1
     const isTop = (i < boardWidth)
-    const isBottom = (i > 90)
+    const isBottom = (i >= 90)
     if (allCells[i].classList.contains('safe')) {
+      console.log(i)
       if (!isLeftEdge && allCells[i - 1].classList.contains('mine')) total++
       if (!isRightEdge && allCells[i + 1].classList.contains('mine')) total++
       if (!isTop && allCells[i - boardWidth].classList.contains('mine')) total++
@@ -39,3 +45,21 @@ function gameBoard () {
   }
 }
 gameBoard()
+
+function clickMe (cell) {
+  if (isGameOver) return
+  if (cell.classList.contains('checked') || cell.classList.contains('flag')) return
+  if (cell.classList.contains('mine')) {
+    cell.classList.add('checked-mine')
+    alert("Game over mate")
+  } else {
+    let total = cell.getAttribute('data')
+    if (total != 0) {
+      cell.classList.add('checked')
+      cell.innerHTML = total
+      return
+    }
+    cell.classList.add('checked')
+  }
+
+}
