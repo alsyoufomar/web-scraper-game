@@ -31,7 +31,7 @@ body {
   background-color: var(--cell-color);
   height: var(--cell-size);
   width: var(--cell-size);
-  border-radius: 3px;
+  /* border-radius: 3px; */
 }
 
 .checked-mine {
