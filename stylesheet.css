@@ -34,9 +34,13 @@ body {
   /* border-radius: 3px; */
 }
 
-.checked-mine {
+.mine {
   background-color: var(--mineCell);
 }
+
+/* .checked-mine {
+  background-color: var(--mineCell);
+} */
 
 .checked {
   background-color: var(--passedCell);
