@@ -1,13 +1,17 @@
 const theGame = () => {
   const board = document.querySelector('.board');
+  const bookmarksLeft = document.querySelector('.bookmarksLeft');
+  const result = document.querySelector('.result');
   const boardWidth = 10;
   const allCells = [];
-  const minesNum = 20;
+  const minesNum = 2;
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
 
-  function gameBoard() {
+  console.log(minesNum);
+
+  (function () {
     const mines = Array(minesNum).fill('mine');
     const safe = Array(boardArea - minesNum).fill('safe');
     const shuffledArr = mines.concat(safe).sort(() => Math.random() - 0.5);
@@ -71,15 +75,14 @@ const theGame = () => {
         allCells[i].setAttribute('data', total);
       }
     }
-  }
-  gameBoard();
+  })();
 
   function clickMe(cell) {
     const id = parseInt(cell.id);
     if (
       isGameOver ||
       cell.classList.contains('checked') ||
-      cell.classList.contains('flag')
+      cell.classList.contains('bookmark')
     )
       return;
     if (cell.classList.contains('mine')) {
@@ -93,12 +96,12 @@ const theGame = () => {
         cell.innerHTML = total;
         return;
       }
-      spread(cell, id);
+      spread(id);
     }
     cell.classList.add('checked');
   }
 
-  function spread(cell, id) {
+  function spread(id) {
     const isLeftEdge = id % boardWidth === 0;
     const isRightEdge = id % boardWidth === boardWidth - 1;
     const isTop = id < boardWidth;
@@ -150,6 +153,7 @@ const theGame = () => {
   }
 
   function gameOver() {
+    result.innerHTML = 'We got you Mr hacker!!';
     isGameOver = true;
     console.log('game over');
     for (let cell of allCells) {
@@ -162,15 +166,39 @@ const theGame = () => {
 
   function addBookmark(cell) {
     if (isGameOver) return;
-    if (!cell.classList.contains('checked') && bookmarks < minesNum) {
-      if (cell.classList.contains('bookmark')) {
+    if (!cell.classList.contains('checked')) {
+      if (!cell.classList.contains('bookmark')) {
+        if (bookmarks < minesNum) {
+          cell.classList.add('bookmark');
+          bookmarks++;
+          cell.innerHTML = '💾';
+          bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+          checkWinner();
+        }
+      } else {
+        console.log('activated');
         cell.classList.remove('bookmark');
         bookmarks--;
         cell.innerHTML = '';
-      } else {
-        cell.classList.add('bookmark');
-        bookmarks++;
-        cell.innerHTML = '💾';
+        bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+      }
+      console.log(cell);
+    }
+  }
+
+  function checkWinner() {
+    let matches = 0;
+
+    for (let cell of allCells) {
+      if (
+        cell.classList.contains('mine') &&
+        cell.classList.contains('bookmark')
+      ) {
+        matches++;
+      }
+      if (matches === minesNum) {
+        result.innerHTML = 'You won!!';
+        isGameOver = true;
       }
     }
   }

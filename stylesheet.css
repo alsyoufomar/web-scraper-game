@@ -133,6 +133,11 @@ body {
   color: var(--clr-dark);
 }
 
+.bookmarksLeft,
+.result {
+  color: var(--clr-light);
+}
+
 /* glitch effect */
 
 .demo {
