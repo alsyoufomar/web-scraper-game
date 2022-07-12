@@ -3,12 +3,14 @@
 // this will prevent the anchor tag from performing its default behavior of navigating to the link target(href)
 // now we will use the browser's history API by calling pushState, and passing our anchor's href value to the 3rd argument
 // this will update the url on the browser
-const route = (event) => {
+
+function route(event) {
   event = event || window.event;
   event.preventDefault();
   window.history.pushState({}, '', event.target.href);
+  console.log('here is my event', event.target.href);
   handleLocation();
-};
+}
 
 // here we gonna define our routes for the path in handleLocation
 // every route has its own html page
@@ -27,13 +29,19 @@ const routes = {
 // once we have our html to load, we asssign it to the innerHTML of our page container
 const handleLocation = async () => {
   let path = window.location.pathname;
-  console.log('here we go', path);
   if (path === '/index.html') {
     path = '/';
   }
+  if (path === '/game') {
+    console.log('game route');
+  }
   const route = routes[path] || routes[404];
-  const html = await fetch(route).then((data) => data.text());
+  const html = await fetch(route).then((data) => {
+    return data.text();
+  });
   document.getElementById('main-page').innerHTML = html;
+  if (path === '/game') theGame();
+  if (path === '/') entryMessage();
 };
 
 // last thing we need to do is to handle browser routing functionality and page first load

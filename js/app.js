@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+const theGame = () => {
   const board = document.querySelector('.board');
   const boardWidth = 10;
   const allCells = [];
   const minesNum = 20;
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
+  let bookmarks = 0;
 
   function gameBoard() {
     const mines = Array(minesNum).fill('mine');
@@ -22,13 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.addEventListener('click', (e) => {
         clickMe(cell);
       });
+
+      cell.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        addBookmark(cell);
+      });
     }
 
     for (let i = 0; i < allCells.length; i++) {
       let total = 0;
       const isLeftEdge = i % boardWidth === 0;
       const isRightEdge = i % boardWidth === boardWidth - 1;
-      const isTop = i <= boardWidth;
+      const isTop = i < boardWidth;
       const isBottom = i >= boardArea - boardWidth;
       if (allCells[i].classList.contains('safe')) {
         if (i > 0 && !isLeftEdge && allCells[i - 1].classList.contains('mine'))
@@ -39,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isBottom && allCells[i + boardWidth].classList.contains('mine'))
           total++;
         if (
-          i > boardWidth + 1 &&
+          i > boardWidth &&
           !isLeftEdge &&
           allCells[i - 1 - boardWidth].classList.contains('mine')
         )
@@ -77,8 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
     )
       return;
     if (cell.classList.contains('mine')) {
-      // cell.classList.add('checked-mine');
-      console.log('Game over mate');
+      cell.classList.add('checked-mine');
+      cell.innerHTML = 'f';
+      gameOver();
     } else {
       let total = cell.getAttribute('data');
       if (total != 0) {
@@ -94,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function spread(cell, id) {
     const isLeftEdge = id % boardWidth === 0;
     const isRightEdge = id % boardWidth === boardWidth - 1;
-    const isTop = id <= boardWidth;
+    const isTop = id < boardWidth;
     const isBottom = id >= boardArea - boardWidth;
 
     setTimeout(() => {
@@ -141,4 +148,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 20);
   }
-});
+
+  function gameOver() {
+    isGameOver = true;
+    console.log('game over');
+    for (let cell of allCells) {
+      if (cell.classList.contains('mine')) {
+        cell.classList.add('checked-mine');
+        cell.innerHTML = 'f';
+      }
+    }
+  }
+
+  function addBookmark(cell) {
+    if (isGameOver) return;
+    if (!cell.classList.contains('checked') && bookmarks < minesNum) {
+      if (cell.classList.contains('bookmark')) {
+        cell.classList.remove('bookmark');
+        bookmarks--;
+        cell.innerHTML = '';
+      } else {
+        cell.classList.add('bookmark');
+        bookmarks++;
+        cell.innerHTML = '💾';
+      }
+    }
+  }
+};
