@@ -71,11 +71,11 @@ body {
 
 .checked {
   background-color: var(--clr-dark);
-  border: 2px solid var(--clr-light);
   color: var(--clr-light);
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 2px solid var(--clr-light);
   filter: blur(0.2px);
   box-shadow: inset 0 0 10px #ffffff4b;
 }
@@ -136,6 +136,60 @@ body {
 .bookmarksLeft,
 .result {
   color: var(--clr-light);
+}
+
+/* game styling */
+
+.container {
+  display: grid;
+  grid-template: 1fr / repeat(3, 1fr);
+}
+
+/* pop up styling */
+
+.popup {
+  height: 40%;
+  position: fixed;
+  top: 30%;
+  left: 20%;
+  right: 20%;
+  background-color: var(--clr-dark);
+  z-index: 10;
+  border: 2px solid var(--clr-light);
+  filter: blur(0.2px);
+  box-shadow: inset 0 0 10px #ffffff4b;
+  color: var(--clr-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_btn {
+  width: 12em;
+  height: 2.5em;
+  border: 2px solid var(--clr-light);
+  box-shadow: inset 0 0 10px #ffffff4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.popup:hover .popup_btn {
+  animation: paths 2s step-end;
+}
+
+.popup:active .popup_btn {
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+}
+
+.message_body {
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
 }
 
 /* glitch effect */

@@ -8,8 +8,8 @@ const theGame = () => {
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
-
-  console.log(minesNum);
+  bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+  result.innerHTML = ' ';
 
   (function () {
     const mines = Array(minesNum).fill('mine');
@@ -182,7 +182,6 @@ const theGame = () => {
         cell.innerHTML = '';
         bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
       }
-      console.log(cell);
     }
   }
 
