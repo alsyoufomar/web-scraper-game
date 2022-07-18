@@ -8,7 +8,7 @@ const theGame = () => {
   const lobby = document.querySelector('.lobby');
   const boardWidth = 10;
   const allCells = [];
-  const minesNum = 2;
+  const minesNum = 10;
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
