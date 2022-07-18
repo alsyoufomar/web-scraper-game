@@ -33,9 +33,6 @@ const handleLocation = async () => {
   if (path === '/index.html') {
     path = '/';
   }
-  if (path === '/game') {
-    // console.log('game route');
-  }
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => {
     return data.text();
