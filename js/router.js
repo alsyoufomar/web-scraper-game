@@ -3,12 +3,12 @@
 // this will prevent the anchor tag from performing its default behavior of navigating to the link target(href)
 // now we will use the browser's history API by calling pushState, and passing our anchor's href value to the 3rd argument
 // this will update the url on the browser
+const backgroundAudio = new Audio();
 
 function route(event) {
   event = event || window.event;
   event.preventDefault();
   window.history.pushState({}, '', event.target.href);
-  console.log('here is my event', event.target.href);
   handleLocation();
 }
 
@@ -29,11 +29,12 @@ const routes = {
 // once we have our html to load, we asssign it to the innerHTML of our page container
 const handleLocation = async () => {
   let path = window.location.pathname;
+  if (path === '/') backgroundAudio.pause();
   if (path === '/index.html') {
     path = '/';
   }
   if (path === '/game') {
-    console.log('game route');
+    // console.log('game route');
   }
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => {

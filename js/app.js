@@ -1,15 +1,41 @@
 const theGame = () => {
   const board = document.querySelector('.board');
   const bookmarksLeft = document.querySelector('.bookmarksLeft');
+  const bookmarksUsed = document.querySelector('.bookmarksUsed');
+  const facebooksNum = document.querySelector('.facebooksNum');
   const result = document.querySelector('.result');
+  const thugLifetime = document.querySelector('.thugLife');
+  const lobby = document.querySelector('.lobby');
   const boardWidth = 10;
   const allCells = [];
   const minesNum = 2;
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
+
   bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+  bookmarksUsed.innerHTML = `Marked URLs = ${bookmarks}`;
+  facebooksNum.innerHTML = `FB URLs total = ${minesNum}`;
   result.innerHTML = ' ';
+
+  const audioScrape = new Audio();
+  const errorAudio = new Audio();
+  const errBG = new Audio();
+  const winnerAudio = new Audio();
+  const lobbyBtn = new Audio();
+  lobbyBtn.src = '../audio/tech.wav';
+  audioScrape.src = '../audio/select.wav';
+  errorAudio.src = '../audio/error.wav';
+  errBG.src = '../audio/fail.wav';
+  backgroundAudio.src = '../audio/bg.mp3';
+  winnerAudio.src = '../audio/winner.mp3';
+
+  if (!isGameOver) backgroundAudio.play();
+
+  lobby.addEventListener('click', (e) => {
+    lobbyBtn.play();
+    backgroundAudio.pause();
+  });
 
   (function () {
     const mines = Array(minesNum).fill('mine');
@@ -26,6 +52,10 @@ const theGame = () => {
 
       cell.addEventListener('click', (e) => {
         clickMe(cell);
+        if (!isGameOver) {
+          audioScrape.load(); //this will predownload the audio into the buffer
+          audioScrape.play();
+        }
       });
 
       cell.addEventListener('contextmenu', (e) => {
@@ -78,6 +108,8 @@ const theGame = () => {
   })();
 
   function clickMe(cell) {
+    if (isGameOver) errorAudio.play();
+
     const id = parseInt(cell.id);
     if (
       isGameOver ||
@@ -153,9 +185,10 @@ const theGame = () => {
   }
 
   function gameOver() {
-    result.innerHTML = 'We got you Mr hacker!!';
+    result.innerHTML = '<p>We got you <br/> Mr hacker!!</p>';
     isGameOver = true;
-    console.log('game over');
+    backgroundAudio.pause();
+    errBG.play();
     for (let cell of allCells) {
       if (cell.classList.contains('mine')) {
         cell.classList.add('checked-mine');
@@ -173,6 +206,7 @@ const theGame = () => {
           bookmarks++;
           cell.innerHTML = '💾';
           bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+          bookmarksUsed.innerHTML = `Marked URLs = ${bookmarks}`;
           checkWinner();
         }
       } else {
@@ -181,6 +215,7 @@ const theGame = () => {
         bookmarks--;
         cell.innerHTML = '';
         bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
+        bookmarksUsed.innerHTML = `Marked URLs = ${bookmarks}`;
       }
     }
   }
@@ -196,7 +231,10 @@ const theGame = () => {
         matches++;
       }
       if (matches === minesNum) {
-        result.innerHTML = 'You won!!';
+        result.innerHTML = '<p>Thug Life <br/> Certified!!</p>';
+        thugLifetime.style.display = 'block';
+        backgroundAudio.pause();
+        winnerAudio.play();
         isGameOver = true;
       }
     }

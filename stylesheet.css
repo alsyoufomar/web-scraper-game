@@ -66,7 +66,7 @@ body {
 }
 
 .mine {
-  background-color: var(--mineCell);
+  background-color: var(--cell-color);
 }
 
 .checked {
@@ -134,6 +134,8 @@ body {
 }
 
 .bookmarksLeft,
+.bookmarksUsed,
+.facebooksNum,
 .result {
   color: var(--clr-light);
 }
@@ -145,10 +147,28 @@ body {
   grid-template: 1fr / repeat(3, 1fr);
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 20rem;
+  padding-left: 1rem;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  padding: 1rem;
+}
+
 /* pop up styling */
 
 .popup {
-  height: 40%;
+  height: 50%;
   position: fixed;
   top: 30%;
   left: 20%;
@@ -190,6 +210,15 @@ body {
   margin: 0;
   text-align: center;
   line-height: 1.4;
+}
+
+/* thug life */
+
+.thugLife {
+  position: fixed;
+  top: 10%;
+  left: 30%;
+  display: none;
 }
 
 /* glitch effect */
