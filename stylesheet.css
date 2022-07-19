@@ -26,8 +26,26 @@ h1 {
   --passedCell: #0f0;
   --mineCell: #f00;
 
-  --grid-size: 418px;
   --cell-size: 40px;
+  --grid-size: calc((var(--cell-size) * 10) + 9 * 2px);
+}
+
+/* 10 cells width */
+/* .easy {
+  --cell-size: 40px;
+  --grid-size: calc((var(--cell-size) * 10) + 12 * 2px);
+} */
+
+/* 15 cells width */
+.medium {
+  --cell-size: 30px;
+  --grid-size: calc((var(--cell-size) * 15) + 14 * 2px);
+}
+
+/* 20 cells width */
+.hard {
+  --cell-size: 25px;
+  --grid-size: calc((var(--cell-size) * 20) + 19 * 2px);
 }
 
 body {

@@ -1,4 +1,5 @@
 const theGame = () => {
+  console.log('build game');
   const board = document.querySelector('.board');
   const bookmarksLeft = document.querySelector('.bookmarksLeft');
   const bookmarksUsed = document.querySelector('.bookmarksUsed');
@@ -6,9 +7,29 @@ const theGame = () => {
   const result = document.querySelector('.result');
   const thugLifetime = document.querySelector('.thugLife');
   const lobby = document.querySelector('.lobby');
-  const boardWidth = 10;
+
+  const levels = {
+    easy: {
+      gridwidth: 10,
+      class: 'easy',
+      level: [10, 15, 20],
+    },
+    medium: {
+      gridwidth: 15,
+      class: 'medium',
+      level: [23, 34, 45],
+    },
+    hard: {
+      gridwidth: 20,
+      class: 'hard',
+      level: [40, 60, 80],
+    },
+  };
+
+  document.body.classList.add(levels.hard.class);
+  const boardWidth = levels.hard.gridwidth;
   const allCells = [];
-  const minesNum = 10;
+  const minesNum = levels.hard.level[0];
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
