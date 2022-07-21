@@ -9,7 +9,7 @@
 a {
   text-decoration: none;
   color: var(--clr-light);
-  text-shadow: 0 0 0.15em;
+  /* text-shadow: 0 0 0.15em; */
 }
 
 h1 {
@@ -58,7 +58,7 @@ body {
   color: #fff;
   z-index: 2;
   letter-spacing: 10px;
-  filter: drop-shadow(0 1px 3px);
+  /* filter: drop-shadow(0 1px 3px); */
 }
 
 .board {
@@ -121,27 +121,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2em;
+  font-size: 1.5em;
   border: 2px solid var(--clr-light);
   width: 100%;
   height: 100%;
-  filter: blur(0.5px);
+  /* filter: blur(0.2px); */
 }
 
 .start__container {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 90%;
   height: 9rem;
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 
 .custom_select {
-  width: 50%;
+  width: 49%;
   height: 3em;
-  margin-bottom: 2rem;
 }
 
 .start__level {
@@ -153,7 +151,8 @@ body {
   color: var(--clr-light);
   outline: none;
   font-size: 1.2em;
-  filter: blur(0.5px);
+  /* filter: blur(0.5px); */
+  text-align-last: center;
 }
 
 .start__level option {
@@ -162,7 +161,7 @@ body {
 
 .start__btn {
   cursor: pointer;
-  width: 40%;
+  width: 49%;
   height: 3em;
   padding: 0;
 }
@@ -195,6 +194,10 @@ body {
   height: 10%;
   color: var(--clr-light);
 }
+
+/* .social__linkedIn {
+  filter: blur(0.5px);
+} */
 
 /* game styling */
 
@@ -233,7 +236,7 @@ body {
   z-index: 10;
   border: 2px solid var(--clr-light);
   filter: blur(0.2px);
-  box-shadow: inset 0 0 10px #ffffff4b;
+  /* box-shadow: inset 0 0 10px #ffffff4b; */
   color: var(--clr-light);
   display: flex;
   flex-direction: column;
@@ -245,16 +248,16 @@ body {
   width: 12em;
   height: 2.5em;
   border: 2px solid var(--clr-light);
-  box-shadow: inset 0 0 10px #ffffff4b;
+  /* box-shadow: inset 0 0 10px #ffffff4b; */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-.popup:hover .popup_btn {
-  animation: paths 2s step-end;
-}
+/* .popup:hover .popup_btn {
+  animation: paths 2s step-end;s
+} */
 
 .popup:active .popup_btn {
   background-color: var(--clr-light);
