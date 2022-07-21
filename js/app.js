@@ -289,7 +289,7 @@ const theGame = () => {
         classy = 'hard';
         numy = 60;
         break;
-      case 'Lewis Campbell':
+      case 'Boolean Developer':
         widthy = 20;
         classy = 'hard';
         numy = 80;
