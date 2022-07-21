@@ -11,7 +11,7 @@ HTML, CSS, JS & [http-server-spa](https://www.npmjs.com/package/http-server-spa)
 
 ## Links
 
-[web-scraper-game.com](https://62d59bb14f7d641beb400ce5--web-scraper-game.netlify.app/)
+[web-scraper-game.com](https://web-scraper-game.netlify.app/)
 
 ## Images
 
