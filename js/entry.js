@@ -66,6 +66,11 @@ function entryMessage() {
     audioScrape.play();
   });
 
+  const levelBtn = document.querySelector('.start__level');
+  levelBtn.addEventListener('click', (e) => {
+    audioScrape.play();
+  });
+
   const levelsPick = document.querySelector('#levelsPick');
   levelsPick.addEventListener('change', (e) => {
     levelup = e.target.value;

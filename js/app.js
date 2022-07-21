@@ -17,7 +17,9 @@ const theGame = () => {
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
+  const levelTitle = document.querySelector('.level__title');
 
+  levelTitle.innerHTML = levelup === null ? 'Silly' : levelup;
   bookmarksLeft.innerHTML = `💾 left = ${minesNum - bookmarks}`;
   bookmarksUsed.innerHTML = `Marked URLs = ${bookmarks}`;
   facebooksNum.innerHTML = `FB URLs total = ${minesNum}`;
@@ -247,47 +249,47 @@ const theGame = () => {
 
   function leveling() {
     switch (levelup) {
-      case 'noob 1':
+      case 'Silly':
         widthy = 10;
         classy = 'easy';
         numy = 10;
         break;
-      case 'noob 2':
+      case 'Noob':
         widthy = 10;
         classy = 'easy';
         numy = 15;
         break;
-      case 'noob 3':
+      case 'Zenitsu Agatsuma':
         widthy = 10;
         classy = 'easy';
         numy = 20;
         break;
-      case 'cool 1':
+      case 'Tanjiro Kamado':
         widthy = 15;
         classy = 'medium';
         numy = 23;
         break;
-      case 'cool 2':
+      case 'Naruto':
         widthy = 15;
         classy = 'medium';
         numy = 34;
         break;
-      case 'cool 3':
+      case 'Super Saiyan':
         widthy = 15;
         classy = 'medium';
         numy = 45;
         break;
-      case 'thugLife 1':
+      case 'Saitama':
         widthy = 20;
         classy = 'hard';
         numy = 40;
         break;
-      case 'thugLife 2':
+      case 'Walter White':
         widthy = 20;
         classy = 'hard';
         numy = 60;
         break;
-      case 'thugLife 3':
+      case 'Lewis Campbell':
         widthy = 20;
         classy = 'hard';
         numy = 80;
