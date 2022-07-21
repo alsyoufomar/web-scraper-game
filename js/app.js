@@ -1,5 +1,4 @@
 const theGame = () => {
-  console.log('build game');
   const board = document.querySelector('.board');
   const bookmarksLeft = document.querySelector('.bookmarksLeft');
   const bookmarksUsed = document.querySelector('.bookmarksUsed');
@@ -7,29 +6,14 @@ const theGame = () => {
   const result = document.querySelector('.result');
   const thugLifetime = document.querySelector('.thugLife');
   const lobby = document.querySelector('.lobby');
-
-  const levels = {
-    easy: {
-      gridwidth: 10,
-      class: 'easy',
-      level: [10, 15, 20],
-    },
-    medium: {
-      gridwidth: 15,
-      class: 'medium',
-      level: [23, 34, 45],
-    },
-    hard: {
-      gridwidth: 20,
-      class: 'hard',
-      level: [40, 60, 80],
-    },
-  };
-
-  document.body.classList.add(levels.hard.class);
-  const boardWidth = levels.hard.gridwidth;
+  let classy = 'easy';
+  let widthy = 10;
+  let numy = 10;
+  leveling();
+  document.body.setAttribute('class', classy);
+  const boardWidth = widthy;
   const allCells = [];
-  const minesNum = levels.hard.level[0];
+  const minesNum = numy;
   let isGameOver = false;
   const boardArea = boardWidth ** 2;
   let bookmarks = 0;
@@ -258,6 +242,56 @@ const theGame = () => {
         winnerAudio.play();
         isGameOver = true;
       }
+    }
+  }
+
+  function leveling() {
+    switch (levelup) {
+      case 'noob 1':
+        widthy = 10;
+        classy = 'easy';
+        numy = 10;
+        break;
+      case 'noob 2':
+        widthy = 10;
+        classy = 'easy';
+        numy = 15;
+        break;
+      case 'noob 3':
+        widthy = 10;
+        classy = 'easy';
+        numy = 20;
+        break;
+      case 'cool 1':
+        widthy = 15;
+        classy = 'medium';
+        numy = 23;
+        break;
+      case 'cool 2':
+        widthy = 15;
+        classy = 'medium';
+        numy = 34;
+        break;
+      case 'cool 3':
+        widthy = 15;
+        classy = 'medium';
+        numy = 45;
+        break;
+      case 'thugLife 1':
+        widthy = 20;
+        classy = 'hard';
+        numy = 40;
+        break;
+      case 'thugLife 2':
+        widthy = 20;
+        classy = 'hard';
+        numy = 60;
+        break;
+      case 'thugLife 3':
+        widthy = 20;
+        classy = 'hard';
+        numy = 80;
+        break;
     }
   }
 };

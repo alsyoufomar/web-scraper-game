@@ -1,3 +1,4 @@
+var levelup = null;
 function entryMessage() {
   const intro = document.querySelector('.intro');
   const warning =
@@ -63,5 +64,10 @@ function entryMessage() {
   const startBtn = document.querySelector('.start__btn');
   startBtn.addEventListener('click', (e) => {
     audioScrape.play();
+  });
+
+  const levelsPick = document.querySelector('#levelsPick');
+  levelsPick.addEventListener('change', (e) => {
+    levelup = e.target.value;
   });
 }
