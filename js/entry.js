@@ -1,4 +1,7 @@
 var levelup = null
+let vh = window.innerHeight * 0.01
+document.documentElement.style.setProperty('--vh', `${vh}px`)
+
 function entryMessage() {
   const intro = document.querySelector('.intro')
   const warning =
