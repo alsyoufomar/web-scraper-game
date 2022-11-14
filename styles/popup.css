@@ -1,0 +1,40 @@
+/* pop up styling */
+
+.popup {
+  height: 50%;
+  position: fixed;
+  top: 30%;
+  left: 20%;
+  right: 20%;
+  background-color: var(--clr-dark);
+  z-index: 10;
+  border: 2px solid var(--clr-light);
+  filter: blur(0.2px);
+  color: var(--clr-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_btn {
+  width: 12em;
+  height: 2.5em;
+  border: 2px solid var(--clr-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.popup:active .popup_btn {
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+}
+
+.message_body {
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+}

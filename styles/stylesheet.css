@@ -1,0 +1,68 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  /* font-family: 'Inter', sans-serif; */
+  font-family: 'Press Start 2P', cursive;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-light);
+  /* text-shadow: 0 0 0.15em; */
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-light: azure;
+  --clr-dark: #112c3d;
+  --clr-facebook: #0c85ef;
+
+  --cell-color: azure;
+  --passedCell: #0f0;
+  --mineCell: #f00;
+
+  --cell-size: 40px;
+  --grid-size: calc((var(--cell-size) * 10) + 9 * 2px);
+}
+
+/* 15 cells width */
+.medium {
+  --cell-size: 30px;
+  --grid-size: calc((var(--cell-size) * 15) + 14 * 2px);
+}
+
+/* 20 cells width */
+.hard {
+  --cell-size: 25px;
+  --grid-size: calc((var(--cell-size) * 20) + 19 * 2px);
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#000000, #112c3d);
+}
+
+@media only screen and (max-width: 1240px) {
+  .hard {
+    --cell-size: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .hard {
+    --cell-size: 17px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .hard {
+    --cell-size: 15px;
+  }
+}
