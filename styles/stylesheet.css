@@ -55,14 +55,34 @@ body {
   .hard {
     --cell-size: 20px;
   }
+
+  .medium {
+    --cell-size: 25px;
+  }
+
+  :root {
+    --cell-size: 35px;
+  }
 }
 @media only screen and (max-width: 500px) {
   .hard {
     --cell-size: 17px;
   }
+  .medium {
+    --cell-size: 22px;
+  }
+  :root {
+    --cell-size: 32px;
+  }
 }
 @media only screen and (max-width: 415px) {
   .hard {
     --cell-size: 15px;
+  }
+  .medium {
+    --cell-size: 20px;
+  }
+  :root {
+    --cell-size: 30px;
   }
 }
